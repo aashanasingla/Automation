@@ -69,4 +69,33 @@ public class AmazonPage extends PageBase {
     public boolean isproceedToCheckoutPresent(){
         return isElementPresent("proceedToCheckout");
     }
+
+    public void clickOnSearchBar(){
+        find("clickSearchBar").click();
+    }
+
+    public void inputOnSearchBar(String s){
+        enterText("clickSearchBar",s);
+    }
+
+    public void clickOnSearchButton(){
+        find("clickOnSearch").click();
+    }
+
+    public void selectSecondElement(){
+        find("selectSecondElement").click();
+    }
+
+    public boolean isQuantitytPresent(){
+        return isElementPresent("selectQuantity");
+    }
+
+    public void clickQuantity(){
+        find("selectQuantity").click();
+    }
+
+    public void selectQuantity(){
+        find("markItAs2").click();
+    }
+
 }

@@ -46,4 +46,23 @@ public class AmazonTest extends TestBase {
         Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(),"headphones are not added to cart");
     }
 
+    @Test
+    public void addMacBookPro() {
+        amazonPage.clickOnAccountButton();
+        Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
+        amazonPage.enterEmailId("gojekproject9@gmail.com");
+        amazonPage.enterPassword("gojek1234");
+        amazonPage.clickSubmit();
+        Assert.assertTrue(amazonPage.isSignedIn(),"we are not signed in to account");
+        amazonPage.clickOnSearchBar();
+        amazonPage.inputOnSearchBar("Macbook pro");
+        amazonPage.clickOnSearchButton();
+        amazonPage.selectSecondElement();
+        Assert.assertTrue(amazonPage.isQuantitytPresent(),"we are not navigated properly");
+        amazonPage.clickQuantity();
+        amazonPage.selectQuantity();
+        amazonPage.clickAddToCart();
+        Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(),"headphones are not added to cart");
+    }
+
 }

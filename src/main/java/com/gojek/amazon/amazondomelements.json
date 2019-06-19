@@ -36,6 +36,23 @@
     "xpath" : "//input[@id=\"add-to-cart-button\"]"
   },
   "proceedToCheckout" : {
-    "xpath" : "//span[contains(text(),\"Proceed to checkout (1 item)\")]"
+    "xpath" : "//span[contains(text(),\"Proceed to checkout\")]"
+  },
+  "clickSearchBar" : {
+    "xpath" : "//input[@id=\"twotabsearchtextbox\"]"
+  },
+  "clickOnSearch" : {
+    "xpath" : "//*[@id=\"nav-search\"]/form/div[2]/div/input"
+  },
+  "selectSecondElement" : {
+    "xpath" : "(//div[@id=\"s-skipLinkTargetForMainSearchResults\"]/../span//div[@data-index=\"1\"])"
+  },
+
+  "selectQuantity" : {
+    "xpath" : "//span[@id=\"a-autoid-0-announce\"]"
+  },
+
+  "markItAs2" : {
+    "xpath" : "//li/a[@id=\"quantity_1\"]"
   }
 }
