@@ -1,0 +1,41 @@
+{
+  "accountButton" : {
+    "xpath" : "//a[@id=\"nav-link-accountList\"]"
+  },
+  "signInText" : {
+    "xpath" : "//h1[contains(text(),\"Sign-In\")]"
+  },
+  "emailId" : {
+    "xpath" : "//input[@id=\"ap_email\"]"
+  },
+  "password" : {
+    "xpath" : "//input[@id=\"ap_password\"]"
+  },
+  "submit" : {
+    "xpath" : "//input[@id=\"signInSubmit\"]"
+  },
+  "accounts" : {
+    "xpath" : "//a[@id=\"nav-link-accountList\"]/span[contains(text(),\"Hello, Aashana\")]"
+  },
+  "signOut" : {
+    "xpath" : "//a[@id=\"nav-item-signout\"]"
+  },
+  "department" : {
+    "xpath" : "//a[@id=\"nav-link-shopall\"]"
+  },
+  "electronics" : {
+    "xpath" : "//span[contains(text(),\"Electronics\")]"
+  },
+  "headphones" : {
+    "xpath" : "//span[contains(text(),\"HEADPHONES\")]"
+  },
+  "firstHeadphone" : {
+    "xpath" : "(//div[@class=\"a-section a-spacing-medium\"])[1]//div[@class=\"a-section a-spacing-none\"]//img"
+  },
+  "addToCart" : {
+    "xpath" : "//input[@id=\"add-to-cart-button\"]"
+  },
+  "proceedToCheckout" : {
+    "xpath" : "//span[contains(text(),\"Proceed to checkout (1 item)\")]"
+  }
+}

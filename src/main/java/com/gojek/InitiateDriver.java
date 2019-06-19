@@ -1,4 +1,4 @@
-package com.gojek.util;
+package com.gojek;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;

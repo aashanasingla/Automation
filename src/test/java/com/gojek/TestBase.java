@@ -1,28 +1,26 @@
 package com.gojek;
 
-import com.gojek.util.InitiateDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.TestListenerAdapter;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeSuite;
 
 public class TestBase extends TestListenerAdapter {
 
     protected RemoteWebDriver driver;
 
-    @BeforeMethod
-    public void setup() {
+    @BeforeSuite
+    public void init() {
         InitiateDriver initiateDriver = new InitiateDriver();
         driver = initiateDriver.getDriver();
     }
 
-    @Test
-    public void test() {
-        System.out.println("Hello world");
+    public void openUrl(String url){
+        driver.get(url);
     }
 
-    public void closeWindow()
-    {
-        driver.close();
+    @AfterMethod
+    public void afterMethodOperation() {
+       // driver.close();
     }
 }
