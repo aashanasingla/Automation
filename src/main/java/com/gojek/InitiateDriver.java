@@ -8,8 +8,11 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 
 public class InitiateDriver {
 
@@ -22,16 +25,22 @@ public class InitiateDriver {
      */
     private String url = "http://127.0.0.1:4444/wd/hub";
 
-    private String CHROME_DRIVER = "chrome";
+    //private String CHROME_DRIVER = "chrome";
 
     public InitiateDriver() {
         try {
-            DesiredCapabilities capabilities = getDesiredCapabilities(CHROME_DRIVER);
+            InputStream input = this.getClass().getClassLoader().getResourceAsStream(System.getProperty("user.dir") + "/src/main/resources/config.properties");
+            Properties configProperties = new Properties();
+            configProperties.load(input);
+            DesiredCapabilities capabilities = getDesiredCapabilities(configProperties.get("browser").toString());
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/chromedriver");
             driver = new RemoteWebDriver(new URL(url), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     /**
@@ -41,7 +50,7 @@ public class InitiateDriver {
      */
     private DesiredCapabilities getDesiredCapabilities(final String driverType) {
         DesiredCapabilities capabilities = null;
-        if (driverType.equals(CHROME_DRIVER)) {
+        if (driverType.equals("Chrome")) {
             capabilities  = DesiredCapabilities.chrome();
             //capabilities.setCapability(CapabilityType.PROXY, startProxyServer());
         }

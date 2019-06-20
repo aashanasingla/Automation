@@ -2,14 +2,14 @@ package com.gojek;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.TestListenerAdapter;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
+
 
 public class TestBase extends TestListenerAdapter {
 
     protected RemoteWebDriver driver;
 
-    @BeforeSuite
+    @BeforeMethod(alwaysRun = true)
     public void init() {
         InitiateDriver initiateDriver = new InitiateDriver();
         driver = initiateDriver.getDriver();
@@ -19,8 +19,8 @@ public class TestBase extends TestListenerAdapter {
         driver.get(url);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void afterMethodOperation() {
-       // driver.close();
+        driver.quit();
     }
 }

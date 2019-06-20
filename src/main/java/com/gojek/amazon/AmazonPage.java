@@ -86,16 +86,40 @@ public class AmazonPage extends PageBase {
         find("selectSecondElement").click();
     }
 
-    public boolean isQuantitytPresent(){
-        return isElementPresent("selectQuantity");
-    }
-
     public void clickQuantity(){
         find("selectQuantity").click();
     }
 
     public void selectQuantity(){
         find("markItAs2").click();
+    }
+
+    public void clickOnCart(){
+        find("viewCart").click();
+    }
+
+    public boolean isShoppingCartPresent(){
+        return find("shoppingCart").isDisplayed();
+    }
+
+    public void deleteFirstProduct(){
+        find("delete").click();
+    }
+
+    public void clickSecondProductQuantity(){
+        find("changeQuantity").click();
+    }
+
+    public void changeQuantity(){
+        find("changeNumber").click();
+    }
+
+    public boolean isProductDeleted(){
+        return isElementPresent("productDeleted");
+    }
+
+    public boolean isQuantitChanged(){
+        return isElementPresent("verifyQuantity");
     }
 
 }

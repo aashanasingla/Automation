@@ -45,14 +45,43 @@
     "xpath" : "//*[@id=\"nav-search\"]/form/div[2]/div/input"
   },
   "selectSecondElement" : {
-    "xpath" : "(//div[@id=\"s-skipLinkTargetForMainSearchResults\"]/../span//div[@data-index=\"1\"])"
+    "xpath" : "(//div[@id=\"s-skipLinkTargetForMainSearchResults\"]/../span//div[@data-index=\"1\"])//a[@class=\"a-link-normal a-text-normal\"]"
   },
 
   "selectQuantity" : {
-    "xpath" : "//span[@id=\"a-autoid-0-announce\"]"
+    "xpath" : "//span[@class=\"a-button-text a-declarative\"]"
   },
 
   "markItAs2" : {
-    "xpath" : "//li/a[@id=\"quantity_1\"]"
+    "xpath" : "//select[@id=\"quantity\"]/option[@value=\"2\"]"
+  },
+
+  "viewCart" : {
+    "xpath" : "//a[@id=\"nav-cart\"]"
+  },
+
+  "shoppingCart" : {
+    "xpath" : "//h2[contains(text(),\"Shopping Cart\")]"
+  },
+
+  "delete" : {
+    "xpath" : "//form[@id=\"activeCartViewForm\"]//div[@data-quantity=\"1\"]//input[@value=\"Delete\"]"
+  },
+
+  "productDeleted" : {
+    "xpath" : "//div[(@data-item-count=\"1\")and(@data-removed=\"true\")]"
+  },
+
+  "changeQuantity" : {
+    "xpath" : "//*[@id=\"a-autoid-0\"]"
+  },
+
+  "changeNumber" : {
+    "xpath" : "//form[@id=\"activeCartViewForm\"]//div[@data-quantity=\"2\"]//select/option[@value=\"1\"]"
+  },
+
+  "verifyQuantity" : {
+    "xpath" : "//span[@id=\"a-autoid-0-announce\"]//span[contains(text(),\"1\")]"
   }
+
 }
