@@ -21,7 +21,7 @@ public class AmazonTest extends TestBase {
     }
 
     @Test(priority = 1)
-    public void validateLoginLogout() {
+    public void validateLoginLogout() throws InterruptedException {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
@@ -29,12 +29,13 @@ public class AmazonTest extends TestBase {
         amazonPage.clickSubmit();
         Assert.assertTrue(amazonPage.isSignedIn(), "we are not signed in to account");
         amazonPage.clickSignOut();
+        Thread.sleep(1000);
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
 
     }
 
     @Test(priority = 2)
-    public void addHeadPhone() {
+    public void addHeadPhone() throws InterruptedException {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
@@ -45,6 +46,7 @@ public class AmazonTest extends TestBase {
         amazonPage.clickheadphones();
         amazonPage.clickfirstHeadphone();
         amazonPage.clickAddToCart();
+        Thread.sleep(2000);
         Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(), "headphones are not added to cart");
     }
 
@@ -63,7 +65,7 @@ public class AmazonTest extends TestBase {
         amazonPage.clickQuantity();
         amazonPage.selectQuantity();
         amazonPage.clickAddToCart();
-        Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(), "headphones are not added to cart");
+        Assert.assertTrue(amazonPage.isproceedToCheckoutPresentMain(), "headphones are not added to cart");
     }
 
     @Test(priority = 4)

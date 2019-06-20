@@ -69,6 +69,10 @@ public class AmazonPage extends PageBase {
         return isElementPresent("proceedToCheckout");
     }
 
+    public boolean isproceedToCheckoutPresentMain() {
+        return isElementPresent("proceedToCheckoutMain");
+    }
+
     public void clickOnSearchBar() {
         find("clickSearchBar").click();
     }

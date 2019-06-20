@@ -38,6 +38,9 @@
   "proceedToCheckout" : {
     "xpath" : "//span[contains(text(),\"Proceed to checkout\")]"
   },
+  "proceedToCheckoutMain" : {
+    "xpath" : "(//a[contains(text(),\"Proceed to checkout\")])[1]"
+  },
   "clickSearchBar" : {
     "xpath" : "//input[@id=\"twotabsearchtextbox\"]"
   },
@@ -49,7 +52,7 @@
   },
 
   "selectQuantity" : {
-    "xpath" : "//span[@class=\"a-button-text a-declarative\"]"
+    "xpath" : "//*[@id=\"quantity\"]"
   },
 
   "markItAs2" : {
@@ -69,7 +72,7 @@
   },
 
   "productDeleted" : {
-    "xpath" : "//div[(@data-item-count=\"1\")and(@data-removed=\"true\")]"
+    "xpath" : "//div[@data-removed=\"true\"]"
   },
 
   "changeQuantity" : {
