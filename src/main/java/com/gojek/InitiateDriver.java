@@ -25,14 +25,14 @@ public class InitiateDriver {
      */
     private String url = "http://127.0.0.1:4444/wd/hub";
 
-    //private String CHROME_DRIVER = "chrome";
+    private String CHROME_DRIVER = "chrome";
 
     public InitiateDriver() {
         try {
-            InputStream input = this.getClass().getClassLoader().getResourceAsStream(System.getProperty("user.dir") + "/src/main/resources/config.properties");
+            /*InputStream input = this.getClass().getClassLoader().getResourceAsStream(System.getProperty("user.dir") + "/src/main/resources/config.properties");
             Properties configProperties = new Properties();
-            configProperties.load(input);
-            DesiredCapabilities capabilities = getDesiredCapabilities(configProperties.get("browser").toString());
+            configProperties.load(input);*/
+            DesiredCapabilities capabilities = getDesiredCapabilities(CHROME_DRIVER);
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/chromedriver");
             driver = new RemoteWebDriver(new URL(url), capabilities);
         } catch (MalformedURLException e) {
@@ -50,7 +50,7 @@ public class InitiateDriver {
      */
     private DesiredCapabilities getDesiredCapabilities(final String driverType) {
         DesiredCapabilities capabilities = null;
-        if (driverType.equals("Chrome")) {
+        if (driverType.equals("chrome")) {
             capabilities  = DesiredCapabilities.chrome();
             //capabilities.setCapability(CapabilityType.PROXY, startProxyServer());
         }
