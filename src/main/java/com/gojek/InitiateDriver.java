@@ -4,7 +4,6 @@ import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import org.openqa.selenium.Proxy;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -29,10 +28,10 @@ public class InitiateDriver {
 
     public InitiateDriver() {
         try {
-            /*InputStream input = this.getClass().getClassLoader().getResourceAsStream(System.getProperty("user.dir") + "/src/main/resources/config.properties");
+            InputStream input = this.getClass().getClassLoader().getResourceAsStream("config.properties");
             Properties configProperties = new Properties();
-            configProperties.load(input);*/
-            DesiredCapabilities capabilities = getDesiredCapabilities(CHROME_DRIVER);
+            configProperties.load(input);
+            DesiredCapabilities capabilities = getDesiredCapabilities(configProperties.getProperty("browser"));
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/chromedriver");
             driver = new RemoteWebDriver(new URL(url), capabilities);
         } catch (MalformedURLException e) {
@@ -45,21 +44,21 @@ public class InitiateDriver {
 
     /**
      * This function will give you desireCapabilities based on driverType
+     *
      * @param driverType it can be chrome drive, firefox, etc
-     * @return  DesiredCapabilities
+     * @return DesiredCapabilities
      */
     private DesiredCapabilities getDesiredCapabilities(final String driverType) {
         DesiredCapabilities capabilities = null;
         if (driverType.equals("chrome")) {
-            capabilities  = DesiredCapabilities.chrome();
+            capabilities = DesiredCapabilities.chrome();
             //capabilities.setCapability(CapabilityType.PROXY, startProxyServer());
         }
         return capabilities;
     }
 
     private Proxy startProxyServer() {
-        if(server == null || !server.isStarted())
-        {
+        if (server == null || !server.isStarted()) {
             server = new BrowserMobProxyServer();
             server.start();
             proxy = ClientUtil.createSeleniumProxy(server);
@@ -71,6 +70,7 @@ public class InitiateDriver {
 
     /**
      * It will return driver object if driver is null will throw Exception
+     *
      * @return RemoteWebDriver
      */
     public RemoteWebDriver getDriver() {

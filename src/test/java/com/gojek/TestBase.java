@@ -2,7 +2,8 @@ package com.gojek;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.TestListenerAdapter;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 
 
 public class TestBase extends TestListenerAdapter {
@@ -15,11 +16,11 @@ public class TestBase extends TestListenerAdapter {
         driver = initiateDriver.getDriver();
     }
 
-    public void openUrl(String url){
+    public void openUrl(String url) {
         driver.get(url);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void afterMethodOperation() {
         driver.quit();
     }

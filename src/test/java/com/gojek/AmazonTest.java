@@ -16,48 +16,46 @@ public class AmazonTest extends TestBase {
 
     @BeforeMethod(alwaysRun = true)
     public void setup() {
-        InitiateDriver initiateDriver = new InitiateDriver();
-        driver = initiateDriver.getDriver();
         openUrl("https://www.amazon.com/");
         amazonPage = new AmazonPage(driver);
     }
 
-    @Test
+    @Test(priority = 1)
     public void validateLoginLogout() {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
         amazonPage.enterPassword("gojek1234");
         amazonPage.clickSubmit();
-        Assert.assertTrue(amazonPage.isSignedIn(),"we are not signed in to account");
+        Assert.assertTrue(amazonPage.isSignedIn(), "we are not signed in to account");
         amazonPage.clickSignOut();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
 
     }
 
-    @Test
+    @Test(priority = 2)
     public void addHeadPhone() {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
         amazonPage.enterPassword("gojek1234");
         amazonPage.clickSubmit();
-        Assert.assertTrue(amazonPage.isSignedIn(),"we are not signed in to account");
+        Assert.assertTrue(amazonPage.isSignedIn(), "we are not signed in to account");
         amazonPage.clickElectronics();
         amazonPage.clickheadphones();
         amazonPage.clickfirstHeadphone();
         amazonPage.clickAddToCart();
-        Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(),"headphones are not added to cart");
+        Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(), "headphones are not added to cart");
     }
 
-    @Test
-    public void addMacBookPro(){
+    @Test(priority = 3)
+    public void addMacBookPro() {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
         amazonPage.enterPassword("gojek1234");
         amazonPage.clickSubmit();
-        Assert.assertTrue(amazonPage.isSignedIn(),"we are not signed in to account");
+        Assert.assertTrue(amazonPage.isSignedIn(), "we are not signed in to account");
         amazonPage.clickOnSearchBar();
         amazonPage.inputOnSearchBar("Macbook pro");
         amazonPage.clickOnSearchButton();
@@ -65,40 +63,40 @@ public class AmazonTest extends TestBase {
         amazonPage.clickQuantity();
         amazonPage.selectQuantity();
         amazonPage.clickAddToCart();
-        Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(),"headphones are not added to cart");
+        Assert.assertTrue(amazonPage.isproceedToCheckoutPresent(), "headphones are not added to cart");
     }
 
-    @Test
-    public void deleteFirstProductFromCart(){
+    @Test(priority = 4)
+    public void deleteFirstProductFromCart() {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
         amazonPage.enterPassword("gojek1234");
         amazonPage.clickSubmit();
-        Assert.assertTrue(amazonPage.isSignedIn(),"we are not signed in to account");
+        Assert.assertTrue(amazonPage.isSignedIn(), "we are not signed in to account");
         amazonPage.clickOnCart();
-        Assert.assertTrue(amazonPage.isShoppingCartPresent(),"navigation is not done properly");
+        Assert.assertTrue(amazonPage.isShoppingCartPresent(), "navigation is not done properly");
         amazonPage.deleteFirstProduct();
-        Assert.assertTrue(amazonPage.isProductDeleted(),"product is not deleted");
+        Assert.assertTrue(amazonPage.isProductDeleted(), "product is not deleted");
     }
 
-    @Test
-    public void changeQuantityOfSecondProductFromCart(){
+    @Test(priority = 5)
+    public void changeQuantityOfSecondProductFromCart() {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
         amazonPage.enterPassword("gojek1234");
         amazonPage.clickSubmit();
-        Assert.assertTrue(amazonPage.isSignedIn(),"we are not signed in to account");
+        Assert.assertTrue(amazonPage.isSignedIn(), "we are not signed in to account");
         amazonPage.clickOnCart();
-        Assert.assertTrue(amazonPage.isShoppingCartPresent(),"navigation is not done properly");
+        Assert.assertTrue(amazonPage.isShoppingCartPresent(), "navigation is not done properly");
         amazonPage.clickSecondProductQuantity();
         amazonPage.changeQuantity();
-        Assert.assertTrue(amazonPage.isQuantitChanged(),"Quantity is not changed");
+        Assert.assertTrue(amazonPage.isQuantitChanged(), "Quantity is not changed");
     }
 
-    @Test(dataProvider = "serachProduct" , dataProviderClass = AmazonDataProvider.class)
-    public void validateMultipleProducts(String product,String keyword) {
+    @Test(dataProvider = "serachProduct", dataProviderClass = AmazonDataProvider.class, priority = 6)
+    public void validateMultipleProducts(String product, String keyword) {
         amazonPage.clickOnAccountButton();
         Assert.assertTrue(amazonPage.isSignInTextPresent(), "navigation failed");
         amazonPage.enterEmailId("gojekproject9@gmail.com");
@@ -108,7 +106,7 @@ public class AmazonTest extends TestBase {
         amazonPage.clickOnSearchBar();
         amazonPage.inputOnSearchBar(product);
         amazonPage.clickOnSearchButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains(keyword),"not navigated properly");
+        Assert.assertTrue(driver.getCurrentUrl().contains(keyword), "not navigated properly");
     }
 
 

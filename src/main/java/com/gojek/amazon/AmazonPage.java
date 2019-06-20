@@ -1,7 +1,6 @@
 package com.gojek.amazon;
 
 import com.gojek.PageBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -12,7 +11,7 @@ public class AmazonPage extends PageBase {
 
     private RemoteWebDriver driver;
 
-    public AmazonPage(RemoteWebDriver driver){
+    public AmazonPage(RemoteWebDriver driver) {
         super(filePath, driver);
         this.driver = driver;
     }
@@ -21,34 +20,34 @@ public class AmazonPage extends PageBase {
         find("accountButton").click();
     }
 
-    public boolean isSignInTextPresent(){
-      boolean signinText = isElementPresent("signInText");
-      return signinText;
+    public boolean isSignInTextPresent() {
+        boolean signinText = isElementPresent("signInText");
+        return signinText;
     }
 
-    public void enterEmailId(final String text){
-        enterText("emailId",text);
+    public void enterEmailId(final String text) {
+        enterText("emailId", text);
     }
 
-    public void enterPassword(final String text){
-        enterText("password",text);
+    public void enterPassword(final String text) {
+        enterText("password", text);
     }
 
     public void clickSubmit() {
         find("submit").click();
     }
 
-    public boolean isSignedIn(){
-       return isElementPresent("accounts");
+    public boolean isSignedIn() {
+        return isElementPresent("accounts");
     }
 
-    public void clickSignOut(){
+    public void clickSignOut() {
         Actions action = new Actions(driver);
         WebElement we = find("accounts");
         action.moveToElement(we).moveToElement(find("signOut")).click().build().perform();
     }
 
-    public void clickElectronics(){
+    public void clickElectronics() {
         Actions action = new Actions(driver);
         WebElement we = find("department");
         action.moveToElement(we).moveToElement(find("electronics")).click().build().perform();
@@ -58,67 +57,67 @@ public class AmazonPage extends PageBase {
         find("headphones").click();
     }
 
-    public void clickfirstHeadphone(){
+    public void clickfirstHeadphone() {
         find("firstHeadphone").click();
     }
 
-    public void clickAddToCart(){
+    public void clickAddToCart() {
         find("addToCart").click();
     }
 
-    public boolean isproceedToCheckoutPresent(){
+    public boolean isproceedToCheckoutPresent() {
         return isElementPresent("proceedToCheckout");
     }
 
-    public void clickOnSearchBar(){
+    public void clickOnSearchBar() {
         find("clickSearchBar").click();
     }
 
-    public void inputOnSearchBar(String s){
-        enterText("clickSearchBar",s);
+    public void inputOnSearchBar(String s) {
+        enterText("clickSearchBar", s);
     }
 
-    public void clickOnSearchButton(){
+    public void clickOnSearchButton() {
         find("clickOnSearch").click();
     }
 
-    public void selectSecondElement(){
+    public void selectSecondElement() {
         find("selectSecondElement").click();
     }
 
-    public void clickQuantity(){
+    public void clickQuantity() {
         find("selectQuantity").click();
     }
 
-    public void selectQuantity(){
+    public void selectQuantity() {
         find("markItAs2").click();
     }
 
-    public void clickOnCart(){
+    public void clickOnCart() {
         find("viewCart").click();
     }
 
-    public boolean isShoppingCartPresent(){
+    public boolean isShoppingCartPresent() {
         return find("shoppingCart").isDisplayed();
     }
 
-    public void deleteFirstProduct(){
+    public void deleteFirstProduct() {
         find("delete").click();
     }
 
-    public void clickSecondProductQuantity(){
+    public void clickSecondProductQuantity() {
         find("changeQuantity").click();
     }
 
-    public void changeQuantity(){
+    public void changeQuantity() {
         find("changeNumber").click();
     }
 
-    public boolean isProductDeleted(){
+    public boolean isProductDeleted() {
         return isElementPresent("productDeleted");
     }
 
-    public boolean isQuantitChanged(){
+    public boolean isQuantitChanged() {
         return isElementPresent("verifyQuantity");
     }
 
